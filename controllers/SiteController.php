@@ -29,6 +29,7 @@ class SiteController extends Controller
         $params = [];
         $params['filesProvider'] = $filesService->GetDefaultProvider();
         $params['formModel'] = $uploadForm;
+        $params['largeFilesCount'] = $filesService->LargeFilesCount();
         return $this->render('upload', $params);
     }
 

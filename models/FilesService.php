@@ -42,4 +42,14 @@ class FilesService extends Model
 
         return $dataProvider;
     }
+
+    public function LargeFilesCount() : int
+    {
+        $query =  (new \yii\db\Query())
+            ->select('sum(tags.count) as tags_count')
+            ->from('tags')
+            ->groupBy('file_id')
+            ->having('tags_count > 20');
+        return count($query->all());
+    }
 }

@@ -35,5 +35,7 @@ if (isset($filesProvider)) {
             ['attribute' => 'uploaded'],
         ],
     ]);
+
+    echo Html::label('Количество файлов в которых тегов > 20 - ' . $largeFilesCount);
 }
 ?>
