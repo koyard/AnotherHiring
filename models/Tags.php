@@ -41,8 +41,8 @@ class Tags extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'file_id' => 'File ID',
-            'name' => 'Name',
-            'count' => 'Count',
+            'name' => 'Имя тега',
+            'count' => 'Количество в файле',
         ];
     }
 }

@@ -28,7 +28,7 @@ if (isset($filesProvider)) {
                 'format'    => 'raw',
                 // here comes the problem - instead of parent_region I need to have parent
                 'value'     => function ($provider) {
-                    return Html::a($provider->title, '/index.php?r=site%2FshowFile&fileId='.$provider->id);
+                    return Html::a($provider->title, '/index.php?r=site%2Ffile&fileId='.$provider->id);
                 },
             ],
             ['attribute' => 'uploaded'],

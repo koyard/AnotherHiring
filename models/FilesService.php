@@ -24,7 +24,7 @@ class FilesService extends Model
         }
     }
 
-    public function GetDefaultProvider()
+    public function GetDefaultProvider() : ActiveDataProvider
     {
         $query = Files::find();
 
@@ -32,9 +32,7 @@ class FilesService extends Model
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'title' => [
-                        'title' => SORT_ASC
-                    ]
+                    'uploaded' => SORT_ASC,
                 ]
             ],
             'pagination' => [

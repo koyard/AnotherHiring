@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Files;
 use app\models\FilesService;
+use app\models\TagsService;
 use app\models\UploadForm;
 use Yii;
 use yii\web\Controller;
@@ -14,7 +16,7 @@ class SiteController extends Controller
     {
         $uploadForm = new UploadForm();
         /** @var FilesService $filesService */
-        $filesService = Yii::$container->get(\app\models\FilesService::class);
+        $filesService = Yii::$container->get(FilesService::class);
 
         if (Yii::$app->request->isPost) {
             $uploadForm->file = UploadedFile::getInstance($uploadForm, 'file');
@@ -28,5 +30,19 @@ class SiteController extends Controller
         $params['filesProvider'] = $filesService->GetDefaultProvider();
         $params['formModel'] = $uploadForm;
         return $this->render('upload', $params);
+    }
+
+    public function actionFile($fileId)
+    {
+        /** @var TagsService $tagsService */
+        $tagsService = Yii::$container->get(TagsService::class);
+
+        /** @var Files $file */
+        $file = Files::findOne($fileId);
+
+        $params = [];
+        $params['tagsProvider'] = $tagsService->ProviderForFile($file);
+        $params['fileModel'] = $file;
+        return $this->render('file', $params);
     }
 }

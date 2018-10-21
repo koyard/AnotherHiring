@@ -1,6 +1,8 @@
 <?php
 namespace app\models;
 
+use yii\data\ActiveDataProvider;
+
 class TagsService
 {
     private $tagsCount;
@@ -48,5 +50,22 @@ class TagsService
 
             $tag->save();
         }
+    }
+
+    public function ProviderForFile(Files $file) : ActiveDataProvider
+    {
+        $query = Tags::find()->where(['file_id' => $file->id]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['name' => SORT_ASC]
+            ],
+            'pagination' => [
+                'pageSize' => 20
+            ]
+        ]);
+
+        return $dataProvider;
     }
 }
