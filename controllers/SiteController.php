@@ -17,7 +17,7 @@ class SiteController extends Controller
             $uploadForm->file = UploadedFile::getInstance($uploadForm, 'file');
 
             if ($uploadForm->file && $uploadForm->validate()) {
-                Yii::$container->get('app\models\FilesService')->SaveInfo($uploadForm);
+                Yii::$container->get(\app\models\FilesService::class)->SaveInfo($uploadForm);
             }
         }
 
