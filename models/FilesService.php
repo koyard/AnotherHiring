@@ -15,8 +15,11 @@ class FilesService extends Model
         $file->uploaded = (new \DateTimeImmutable())->format('Y-m-d H:i:s');
 
         $file->save();
-
-        \Yii::$container->get(\app\models\TagsService::class)->ParseTags($form->file->tempName, $file);
+        try {
+            \Yii::$container->get(\app\models\TagsService::class)->ParseTags($form->file->tempName, $file);
+        } catch (\Throwable $exception) {
+            $form->addError('file', 'Ошибка парсинга файла');
+            $file->delete();
+        }
     }
-
 }

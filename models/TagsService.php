@@ -7,6 +7,7 @@ class TagsService
 
     public function ParseTags(string $filePath, Files $file)
     {
+
         $xml = simplexml_load_string(file_get_contents($filePath));
 
         $this->CountTags($xml);
