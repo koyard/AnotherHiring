@@ -2,13 +2,12 @@
 
 namespace app\models;
 
-use yii\base\Model;
 use yii\web\UploadedFile;
 
 /**
  * UploadForm is the model behind the upload form.
  */
-class UploadForm extends Model
+class UploadForm extends Files
 {
     /**
      * @var UploadedFile file attribute

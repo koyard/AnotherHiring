@@ -39,8 +39,8 @@ class Files extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'uploaded' => 'Uploaded',
+            'title' => 'Имя файла',
+            'uploaded' => 'Загружен',
         ];
     }
 }

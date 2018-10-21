@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\base\Model;
+use yii\data\ActiveDataProvider;
 
 class FilesService extends Model
 {
@@ -21,5 +22,26 @@ class FilesService extends Model
             $form->addError('file', 'Ошибка парсинга файла');
             $file->delete();
         }
+    }
+
+    public function GetDefaultProvider()
+    {
+        $query = Files::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'title' => [
+                        'title' => SORT_ASC
+                    ]
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 20
+            ]
+        ]);
+
+        return $dataProvider;
     }
 }
