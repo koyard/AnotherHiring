@@ -23,6 +23,7 @@ if (isset($filesProvider)) {
     echo GridView::widget([
         'dataProvider' => $filesProvider,
         'columns'      => [
+            ['class' => 'yii\grid\SerialColumn'],
             [
                 'attribute' => 'title',
                 'format'    => 'raw',
